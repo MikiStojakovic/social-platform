@@ -17,6 +17,7 @@ namespace API
 {
  public class Startup
  {
+  readonly string MyAllowSpecificOrigins = "EnableCORS";
   public Startup(IConfiguration configuration)
   {
    Configuration = configuration;
@@ -30,6 +31,13 @@ namespace API
    services.AddDbContext<DataContext>(opt =>
    {
     opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+   });
+   services.AddCors(opt =>
+   {
+    opt.AddPolicy(MyAllowSpecificOrigins, policy =>
+    {
+     policy.AllowAnyHeader().AllowAnyHeader().WithOrigins("http://localhost:3000");
+    });
    });
    services.AddControllers();
   }
@@ -47,7 +55,7 @@ namespace API
    app.UseRouting();
 
    app.UseAuthorization();
-
+   app.UseCors(MyAllowSpecificOrigins);
    app.UseEndpoints(endpoints =>
    {
     endpoints.MapControllers();
