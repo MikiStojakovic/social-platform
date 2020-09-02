@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Header, Icon, List, Container } from 'semantic-ui-react';
 import { IActivity } from '../models/activity';
 import { NavBar } from '../../features/nav/NavBar';
+import { ActivityDashboard } from '../../features/activities/dashboard/ActivityDashboard';
+import { act } from 'react-dom/test-utils';
 
 const App = () => {
   const [activities, setActivities] = useState<IActivity[]>([]);
@@ -19,11 +21,7 @@ const App = () => {
     <Fragment>
       <NavBar></NavBar>
       <Container style={{ marginTop: '7em' }}>
-        <List>
-          {activities.map((activity) => (
-            <List.Item key={activity.id}>{activity.title}</List.Item>
-          ))}
-        </List>
+        <ActivityDashboard activities={activities}></ActivityDashboard>
       </Container>
     </Fragment>
   );
