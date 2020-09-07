@@ -1,9 +1,9 @@
 import React from 'react';
-import { Segment, Form } from 'semantic-ui-react';
+import { Segment, Form, Button } from 'semantic-ui-react';
 
 export const ActivityForm = () => {
   return (
-    <Segment>
+    <Segment clearing>
       <Form>
         <Form.Input placeholder="Title" />
         <Form.TextArea rows={2} placeholder="Description" />
@@ -11,6 +11,8 @@ export const ActivityForm = () => {
         <Form.Input type="Date" placeholder="Date" />
         <Form.Input placeholder="City" />
         <Form.Input placeholder="Venue" />
+        <Button floated="right" positive type="submit" content="Submit" />
+        <Button floated="right" type="button" content="Cancel" />
       </Form>
     </Segment>
   );
