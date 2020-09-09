@@ -1,7 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import { IActivity } from '../../../app/models/activity';
-import { act } from 'react-dom/test-utils';
 import { v4 as uuid } from 'uuid';
 
 interface IProps {
