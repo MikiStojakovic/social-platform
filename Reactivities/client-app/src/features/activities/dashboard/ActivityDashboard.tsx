@@ -9,7 +9,6 @@ import ActivityStore from '../../../app/stores/activityStore';
 
 interface IProps {
   activities: IActivity[];
-  selectActivity: (id: string) => void;
   setEditMode: (editMode: boolean) => void;
   setSelectedActivity: (activity: IActivity | null) => void;
   createActivity: (activity: IActivity) => void;
@@ -21,7 +20,6 @@ interface IProps {
 
 const ActivityDashboard: React.FC<IProps> = ({
   activities,
-  selectActivity,
   setEditMode,
   setSelectedActivity,
   createActivity,
