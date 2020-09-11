@@ -36,8 +36,6 @@ const ActivityDashboard: React.FC<IProps> = ({
     <Grid>
       <Grid.Column width={10}>
         <ActivityList
-          activities={activities}
-          selectActivity={selectActivity}
           deleteActivity={deleteActivity}
           submitting={submitting}
           target={target}
