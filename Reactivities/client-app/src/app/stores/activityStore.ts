@@ -13,7 +13,7 @@ class ActivityStore {
   @observable submitting = false;
 
   @computed get activitiesByDate() {
-    return Array.from(this.activities.values()).sort(
+    return Array.from(this.activityRegistry.values()).sort(
       (a, b) => Date.parse(a.date) - Date.parse(b.date)
     );
   }
