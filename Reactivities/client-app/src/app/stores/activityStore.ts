@@ -65,6 +65,11 @@ class ActivityStore {
     this.selectedActivity = undefined;
   };
 
+  @action openEditForm = (id: string) => {
+    this.selectActivity = this.activityRegistry.get(id);
+    this.editMode = true;
+  };
+
   @action selectActivity = (id: string) => {
     this.selectedActivity = this.activityRegistry.get(id);
     this.editMode = false;

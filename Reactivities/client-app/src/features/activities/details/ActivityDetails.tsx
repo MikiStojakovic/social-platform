@@ -14,7 +14,7 @@ const ActivityDetails: React.FC<IProps> = ({
   setSelectedActivity,
 }) => {
   const activityStore = useContext(ActivityStore);
-  const { selectedActivity: activity } = activityStore;
+  const { selectedActivity: activity, openEditForm } = activityStore;
   return (
     <Card fluid>
       <Image
@@ -32,7 +32,7 @@ const ActivityDetails: React.FC<IProps> = ({
       <Card.Content extra>
         <Button.Group widths={2}>
           <Button
-            onClick={() => setEditMode(true)}
+            onClick={() => openEditForm(activity!.id)}
             basic
             color="blue"
             content="Edit"
