@@ -67,7 +67,6 @@ const App = () => {
           activities={activityStore.activities}
           setEditMode={setEditMode}
           setSelectedActivity={setSelectedActivity}
-          editActivity={handleEditActivity}
           deleteActivity={handleDeleteActivity}
           submitting={submitting}
           target={target}
