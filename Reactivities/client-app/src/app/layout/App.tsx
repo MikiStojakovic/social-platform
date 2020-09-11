@@ -51,7 +51,6 @@ const App = () => {
       <Container style={{ marginTop: '7em' }}>
         <ActivityDashboard
           activities={activityStore.activities}
-          setEditMode={setEditMode}
           deleteActivity={handleDeleteActivity}
           submitting={submitting}
           target={target}
