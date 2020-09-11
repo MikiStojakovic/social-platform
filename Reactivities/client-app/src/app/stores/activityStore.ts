@@ -2,6 +2,7 @@ import { observable, action, computed } from 'mobx';
 import { createContext } from 'react';
 import { IActivity } from '../models/activity';
 import agent from '../api/agent';
+import { act } from 'react-dom/test-utils';
 
 class ActivityStore {
   @observable activityRegistry = new Map();
@@ -68,6 +69,14 @@ class ActivityStore {
   @action openEditForm = (id: string) => {
     this.selectActivity = this.activityRegistry.get(id);
     this.editMode = true;
+  };
+
+  @action cancelSelectedActivity = () => {
+    this.selectedActivity = undefined;
+  };
+
+  @action cancelFormOpen = () => {
+    this.editMode = false;
   };
 
   @action selectActivity = (id: string) => {

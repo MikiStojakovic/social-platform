@@ -14,7 +14,11 @@ const ActivityDetails: React.FC<IProps> = ({
   setSelectedActivity,
 }) => {
   const activityStore = useContext(ActivityStore);
-  const { selectedActivity: activity, openEditForm } = activityStore;
+  const {
+    selectedActivity: activity,
+    openEditForm,
+    cancelSelectedActivity,
+  } = activityStore;
   return (
     <Card fluid>
       <Image
@@ -38,7 +42,7 @@ const ActivityDetails: React.FC<IProps> = ({
             content="Edit"
           />
           <Button
-            onClick={() => setSelectedActivity(null)}
+            onClick={cancelSelectedActivity}
             basic
             color="grey"
             content="Cancel"
