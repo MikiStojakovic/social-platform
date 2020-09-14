@@ -25,7 +25,8 @@ const ActivityDetails: React.FC<RouteComponentProps<IDetailParams>> = ({
     loadActivity(match.params.id);
   }, [loadActivity]);
 
-  if (loadingInitial) return <LoadingComponent content="Loading activity" />;
+  if (loadingInitial || !activity)
+    return <LoadingComponent content="Loading activity" />;
 
   return (
     <Card fluid>
