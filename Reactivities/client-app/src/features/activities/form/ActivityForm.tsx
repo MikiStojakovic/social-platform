@@ -12,6 +12,7 @@ interface IDetailParams {
 
 const ActivityForm: React.FC<RouteComponentProps<IDetailParams>> = ({
   match,
+  history,
 }) => {
   const activityStore = useContext(ActivityStore);
   const {
@@ -25,7 +26,7 @@ const ActivityForm: React.FC<RouteComponentProps<IDetailParams>> = ({
   } = activityStore;
 
   useEffect(() => {
-    if (match.params.id) {
+    if (match.params.id && activity.id.length === 0) {
       loadActivity(match.params.id).then(
         () => initialFormState && setActivity(initialFormState)
       );
@@ -51,9 +52,13 @@ const ActivityForm: React.FC<RouteComponentProps<IDetailParams>> = ({
         ...activity,
         id: uuid(),
       };
-      createActivity(newActivity);
+      createActivity(newActivity).then(() =>
+        history.push(`/activities/${newActivity.id}`)
+      );
     } else {
-      editActivity(activity);
+      editActivity(activity).then(() =>
+        history.push(`/activities/${activity.id}`)
+      );
     }
   };
 
