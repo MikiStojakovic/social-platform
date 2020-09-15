@@ -2,7 +2,6 @@ import { observable, action, computed, configure, runInAction } from 'mobx';
 import { createContext, SyntheticEvent } from 'react';
 import { IActivity } from '../models/activity';
 import agent from '../api/agent';
-import { act } from 'react-dom/test-utils';
 
 configure({ enforceActions: 'always' });
 
@@ -23,7 +22,7 @@ class ActivityStore {
     const sortedActivities = activities.sort(
       (a, b) => Date.parse(a.date) - Date.parse(b.date)
     );
-    return sortedActivities;
+    return Object.entries(sortedActivities);
   }
 
   @action loadActivities = async () => {
