@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite';
 import { RouteComponentProps } from 'react-router-dom';
 import { Form as FinalForm, Field } from 'react-final-form';
 import TextInput from '../../../app/common/form/TextInput';
+import { TextAreaInput } from '../../../app/common/form/TextAreaInput';
 
 interface IDetailParams {
   id: string;
@@ -90,8 +91,9 @@ const ActivityForm: React.FC<RouteComponentProps<IDetailParams>> = ({
                 <Field
                   name="description"
                   placeholder="Description"
+                  rows={3}
                   value={activity.description}
-                  component={TextInput}
+                  component={TextAreaInput}
                 />
                 <Field
                   component={TextInput}
