@@ -26,6 +26,7 @@
     "react-toastify": "^6.0.8",
     "react-widgets": "^4.4.11",
     "react-widgets-date-fns": "^4.0.26",
+    "revalidate": "^1.2.0",
     "semantic-ui-react": "^1.2.1",
     "typescript": "^3.7.5",
     "uuid": "^8.3.0"
