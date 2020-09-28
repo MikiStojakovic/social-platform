@@ -2,8 +2,15 @@ import { tr } from 'date-fns/locale';
 import { action, computed, observable } from 'mobx';
 import agent from '../api/agent';
 import { IUser, IUserFormValues } from '../models/user';
+import { RootStore } from './rootStore';
 
 export default class UserStore {
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+  }
+
   @observable user: IUser | null = null;
 
   @computed get isLoggedIn() {
