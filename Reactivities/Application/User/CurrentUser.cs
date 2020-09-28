@@ -35,7 +35,7 @@ namespace Application.User
      Username = user.UserName,
      Token = _jwtGenerator.CreateToken(user),
      Image = null
-    }
+    };
    }
   }
  }
