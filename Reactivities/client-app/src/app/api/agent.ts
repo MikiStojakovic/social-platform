@@ -67,4 +67,5 @@ const User = {
 
 export default {
   Activities,
+  User,
 };
