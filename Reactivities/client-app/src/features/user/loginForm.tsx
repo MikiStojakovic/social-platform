@@ -3,7 +3,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import { Button, Form } from 'semantic-ui-react';
 import TextInput from '../../app/common/form/TextInput';
 
-export const loginForm = () => {
+export const LoginForm = () => {
   return (
     <FinalForm
       onSubmit={(values) => console.log(values)}
@@ -16,7 +16,6 @@ export const loginForm = () => {
             placeholder="Password"
             type="password"
           />
-          <Field name="email" component={TextInput} placeholder="Email" />
           <Button positive content="Login" />
         </Form>
       )}
