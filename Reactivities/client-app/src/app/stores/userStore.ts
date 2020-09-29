@@ -1,5 +1,5 @@
 import { tr } from 'date-fns/locale';
-import { action, computed, observable } from 'mobx';
+import { action, computed, observable, runInAction } from 'mobx';
 import agent from '../api/agent';
 import { IUser, IUserFormValues } from '../models/user';
 import { RootStore } from './rootStore';
@@ -20,7 +20,10 @@ export default class UserStore {
   @action login = async (values: IUserFormValues) => {
     try {
       const user = await agent.User.login(values);
-      this.user = user;
+      runInAction(() => {
+        this.user = user;
+      });
+      console.log(user);
     } catch (error) {
       console.log(error);
     }
