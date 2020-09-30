@@ -10,8 +10,8 @@ export default class CommonStore {
   @observable token: string | null = null;
   @observable appLoaded = false;
 
-  @action setToken = (token: string) => {
-    window.localStorage.setItem('jwt', token);
+  @action setToken = (token: string | null) => {
+    window.localStorage.setItem('jwt', token!);
     this.token = token;
   };
 
