@@ -11,7 +11,7 @@ const ModalContainer: React.FC = () => {
   } = rootStore.modalStore;
   return (
     <Modal open={open} onClose={closeModal} size="mini">
-      <Modal.Content>Our component will go here</Modal.Content>
+      <Modal.Content>{body}</Modal.Content>
     </Modal>
   );
 };
