@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import React from 'react';
-import { Message, MessageItemProps } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 
 interface IProps {
   error: AxiosResponse;

@@ -1,4 +1,3 @@
-import { tr } from 'date-fns/locale';
 import { action, computed, observable, runInAction } from 'mobx';
 import agent from '../api/agent';
 import { IUser, IUserFormValues } from '../models/user';

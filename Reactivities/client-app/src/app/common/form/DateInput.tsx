@@ -19,7 +19,7 @@ export const DateInput: React.FC<IProps> = ({
     <Form.Field error={touched && !!error} width={width}>
       <DateTimePicker
         id={id ? id.toString() : ''}
-        messages={new Object()}
+        messages={{}}
         placeholder={placeholder}
         value={input.value || null}
         onChange={input.onChange}
