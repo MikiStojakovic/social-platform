@@ -4,10 +4,6 @@ import { observer } from 'mobx-react-lite';
 import { Link, NavLink } from 'react-router-dom';
 import { RootStoreContext } from '../../app/stores/rootStore';
 
-interface IProps {
-  openCreateForm: () => void;
-}
-
 const NavBar: React.FC = () => {
   const rootStore = useContext(RootStoreContext);
   const { logout, user } = rootStore.userStore;
