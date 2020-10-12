@@ -25,7 +25,7 @@ const ActivityDetailedSidebar: React.FC<IProps> = ({ attendees }) => {
       <Segment attached>
         <List relaxed divided>
           {attendees.map((attendee) => (
-            <Item style={{ position: 'relative' }}>
+            <Item key={attendee.displayName} style={{ position: 'relative' }}>
               {isHost && (
                 <Label
                   style={{ position: 'absolute' }}
