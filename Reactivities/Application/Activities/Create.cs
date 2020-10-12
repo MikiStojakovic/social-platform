@@ -69,7 +69,7 @@ namespace Application.Activities
      IsHost = true,
      DateJoined = DateTime.Now
     };
-    _context.UserActivityies.Add(attendee);
+    _context.UserActivities.Add(attendee);
 
     var success = await _context.SaveChangesAsync() > 0;
 

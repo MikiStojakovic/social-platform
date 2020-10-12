@@ -37,7 +37,7 @@ namespace Application.Activities
 
     var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetCurrentUsername());
 
-    var attendance = await _context.UserActivityies.SingleOrDefaultAsync(x => x.ActivityId == activity.Id && x.AppUserId == user.Id);
+    var attendance = await _context.UserActivities.SingleOrDefaultAsync(x => x.ActivityId == activity.Id && x.AppUserId == user.Id);
 
     if (attendance != null)
      throw new RestException(HttpStatusCode.BadRequest, new { Attendance = "Already attending this activity" });
@@ -50,7 +50,7 @@ namespace Application.Activities
      DateJoined = DateTime.Now
     };
 
-    _context.UserActivityies.Add(attendance);
+    _context.UserActivities.Add(attendance);
 
     var success = await _context.SaveChangesAsync() > 0;
 
