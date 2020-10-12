@@ -130,7 +130,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ActivityId");
 
-                    b.ToTable("UserActivityies");
+                    b.ToTable("UserActivities");
                 });
 
             modelBuilder.Entity("Domain.Value", b =>

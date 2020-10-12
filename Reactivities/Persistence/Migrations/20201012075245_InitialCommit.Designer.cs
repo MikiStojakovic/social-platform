@@ -9,8 +9,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201002132728_UserActivityAdded")]
-    partial class UserActivityAdded
+    [Migration("20201012075245_InitialCommit")]
+    partial class InitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,7 +132,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ActivityId");
 
-                    b.ToTable("UserActivityies");
+                    b.ToTable("UserActivities");
                 });
 
             modelBuilder.Entity("Domain.Value", b =>

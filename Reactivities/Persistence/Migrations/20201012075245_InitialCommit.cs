@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class UserActivityAdded : Migration
+    public partial class InitialCommit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserActivityies",
+                name: "UserActivities",
                 columns: table => new
                 {
                     AppUserId = table.Column<string>(nullable: false),
@@ -18,15 +18,15 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserActivityies", x => new { x.AppUserId, x.ActivityId });
+                    table.PrimaryKey("PK_UserActivities", x => new { x.AppUserId, x.ActivityId });
                     table.ForeignKey(
-                        name: "FK_UserActivityies_Activities_ActivityId",
+                        name: "FK_UserActivities_Activities_ActivityId",
                         column: x => x.ActivityId,
                         principalTable: "Activities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserActivityies_AspNetUsers_AppUserId",
+                        name: "FK_UserActivities_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -34,15 +34,15 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserActivityies_ActivityId",
-                table: "UserActivityies",
+                name: "IX_UserActivities_ActivityId",
+                table: "UserActivities",
                 column: "ActivityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserActivityies");
+                name: "UserActivities");
         }
     }
 }
