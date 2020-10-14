@@ -16,7 +16,7 @@ namespace Infrastructure.Photos
     config.Value.CloudName,
     config.Value.ApiKey,
     config.Value.ApiSecret
-   )
+   );
 
    _cloudinary = new Cloudinary(account);
   }
@@ -39,7 +39,7 @@ namespace Infrastructure.Photos
    return new PhotoUploadResult
    {
     PublicId = uploadResult.PublicId,
-    Url = uploadResult.SecureUri.AbsoluteUri
+    Url = uploadResult.SecureUrl.AbsoluteUri
    };
   }
 
