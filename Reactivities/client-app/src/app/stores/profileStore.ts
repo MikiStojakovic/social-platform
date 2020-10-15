@@ -10,7 +10,7 @@ export default class ProfileStore {
  }
 
  @observable profile: IProfile | null = null;
- @observable loadingProfile = false;
+ @observable loadingProfile = true;
 
  @action loadProfile = async (username: string) => {
   this.loadingProfile = true;
