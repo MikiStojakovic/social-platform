@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, {useContext, useEffect} from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { Grid } from 'semantic-ui-react'
@@ -12,7 +13,7 @@ interface RouteParams {
 
 interface IProps extends RouteComponentProps<RouteParams> {}
 
-export const ProfilePage: React.FC<IProps> = ({match}) => {
+const ProfilePage: React.FC<IProps> = ({match}) => {
   const rootStore = useContext(RootStoreContext);
   const {loadingProfile, profile, loadProfile} = rootStore.profileStore;
 
@@ -30,3 +31,5 @@ export const ProfilePage: React.FC<IProps> = ({match}) => {
    </Grid>
  )
 }
+
+export default observer(ProfilePage);
