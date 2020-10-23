@@ -18,7 +18,7 @@ export const ProfilePhotos = () => {
       </Grid.Column>
       <Grid.Column width={16}>
         {addPhotoMode ? (
-          <PhotoUploadWidget/>
+          <PhotoUploadWidget loading={false} uploadPhoto={Object}/>
         ) : (
         <Card.Group itemPerRow={5}>
           {profile && profile.photos.map((photo) => (
