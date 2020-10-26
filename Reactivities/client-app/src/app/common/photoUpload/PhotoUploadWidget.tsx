@@ -36,26 +36,22 @@ const PhotoUploadWidget: React.FC<IProps> = ({ loading, uploadPhoto }) => {
         <Grid.Column width={4}>
           <Header sub color='teal' content='Step 3 - Preview & Upload' />
           {files.length > 0 && (
-            <div className='img-preview' style={{minHeight: '200px', overflow: 'hidden'}}/>
-            // <Fragment>
-            //   <div
-            //     className='img-preview'
-            //     style={{ minHeight: '200px', overflow: 'hidden' }}
-            //   />
-            //   <Button.Group widths={2}>
-            //     <Button
-            //       positive
-            //       icon='check'
-            //       loading={loading}
-            //       onClick={() => uploadPhoto(image!)}
-            //     />
-            //     <Button
-            //       icon='close'
-            //       disabled={loading}
-            //       onClick={() => setFiles([])}
-            //     />
-            //   </Button.Group>
-            // </Fragment>
+            <Fragment>
+            <div className='img-preview' style={{ minHeight: '200px', overflow: 'hidden' }}/>
+              <Button.Group widths={2}>
+                <Button
+                  positive
+                  icon='check'
+                  loading={loading}
+                  onClick={() => uploadPhoto(image!)}
+                />
+                <Button
+                  icon='close'
+                  disabled={loading}
+                  onClick={() => setFiles([])}
+                />
+              </Button.Group>
+            </Fragment>
           )}
         </Grid.Column>
       </Grid>
