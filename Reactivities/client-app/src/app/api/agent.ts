@@ -59,7 +59,7 @@ const requests = {
     axios.put(url, body).then(sleep(1000)).then(responseBody),
   delete: (url: string) =>
     axios.delete(url).then(sleep(1000)).then(responseBody),
-    postForm: (url: string, file: Blob) => {
+  postForm: (url: string, file: Blob) => {
       let formData = new FormData();
       formData.append('File', file);
       return axios.post(url, formData, {

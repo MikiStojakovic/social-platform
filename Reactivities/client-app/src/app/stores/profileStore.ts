@@ -18,7 +18,7 @@ export default class ProfileStore {
 
  @computed get isCurrentUser() {
   if (this.rootStore.userStore.user && this.profile) {
-   return this.rootStore.userStore.user.username === this.profile.username;
+   return this.rootStore.userStore.user.username === this.profile.userName;
   } else {
    return false;
   }
@@ -58,7 +58,7 @@ export default class ProfileStore {
    console.log(error);
    toast.error('Problem uploading photo');
    runInAction(() => {
-    this.uploadingPhoto = false;
+    this.uploadingPhoto = false
    })
   }
  }
