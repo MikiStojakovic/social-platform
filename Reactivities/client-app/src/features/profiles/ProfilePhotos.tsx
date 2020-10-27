@@ -6,9 +6,10 @@ import { RootStoreContext } from '../../app/stores/rootStore'
 
 const ProfilePhotos = () => {
  const rootStore = useContext(RootStoreContext);
- const {profile, isCurrentUser, uploadPhoto, uploadingPhoto, setMainPhoto, loading} = rootStore.profileStore;
+ const {profile, isCurrentUser, uploadPhoto, uploadingPhoto, setMainPhoto, deletePhoto, loading} = rootStore.profileStore;
  const [addPhotoMode, setAddPhotoMode] = useState(false);
- const [target, setTarget] = useState<string | undefined>(undefined)
+ const [target, setTarget] = useState<string | undefined>(undefined);
+ const [deleteTarget, setDeleteTarget] = useState<string | undefined>(undefined);
 
  const handleUploadImage = (photo: Blob) => {
    uploadPhoto(photo).then(() => setAddPhotoMode(false));
@@ -38,7 +39,13 @@ const ProfilePhotos = () => {
                 disabled={photo.isMain}
               loading={loading && target === photo.id} 
               basic positive content='Main'/>  
-              <Button basic negative icon='trash'/>  
+              <Button name={photo.id} disabled={photo.isMain}
+              onClick={(e) => {
+                deletePhoto(photo);
+                setDeleteTarget(e.currentTarget.name);
+              }} 
+              loading={loading && deleteTarget === photo.id}
+              basic negative icon='trash'/>  
             </Button.Group>}
           </Card>     
           ))}
