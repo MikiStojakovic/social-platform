@@ -44,11 +44,20 @@ export default class ActivityStore {
     this.hubConnection!.stop();
   }
 
+  @action addComment = async (values: any) => {
+    values.activityId = this.activity!.id;
+    try {
+      await this.hubConnection!.invoke("SendComment", values);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   @computed get activitiesByDate() {
     return this.groupActivitiesByDate(
       Array.from(this.activityRegistry.values())
     );
-  }
+  }  
 
   groupActivitiesByDate(activities: IActivity[]) {
     const sortedActivities = activities.sort(
