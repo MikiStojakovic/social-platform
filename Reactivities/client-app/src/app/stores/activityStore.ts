@@ -24,7 +24,7 @@ export default class ActivityStore {
   @observable.ref hubConnection: HubConnection | null = null;
 
   @action createHubConnection = () => {
-    this.hubConnection = new HubConnectionBuilder().withUrl('https://localhost:5000/chat', {
+    this.hubConnection = new HubConnectionBuilder().withUrl('http://localhost:5000/chat', {
       accessTokenFactory: () => this.rootStore.commonStore.token!
     })
     .configureLogging(LogLevel.Information)

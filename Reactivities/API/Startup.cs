@@ -47,7 +47,8 @@ namespace API
    {
     opt.AddPolicy(MyAllowSpecificOrigins, policy =>
     {
-     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000")
+      .AllowCredentials();
     });
    });
    services.AddMediatR(typeof(List.Handler).Assembly);
