@@ -1,11 +1,12 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { Segment, Header, Form, Button, Comment } from 'semantic-ui-react';
-import { RootStore, RootStoreContext } from '../../../app/stores/rootStore';
+import { RootStoreContext } from '../../../app/stores/rootStore';
 import { Form as FinalForm, Field} from 'react-final-form';
 import { Link } from 'react-router-dom';
 import { TextAreaInput } from '../../../app/common/form/TextAreaInput';
+import { observer } from 'mobx-react-lite';
 
-export const ActivityDetailedChat = () => {
+const ActivityDetailedChat = () => {
   const rootStore = useContext(RootStoreContext);
   const {createHubConnection, stopHubConnection, addComment, activity} = rootStore.activityStore;
 
@@ -62,3 +63,5 @@ export const ActivityDetailedChat = () => {
     </Fragment>
   );
 };
+
+export default observer(ActivityDetailedChat)
