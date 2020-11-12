@@ -1,5 +1,5 @@
 import { tr } from "date-fns/locale";
-import { action, observable, runInAction, computed } from "mobx";
+import { action, observable, runInAction, computed, reaction } from "mobx";
 import { toast } from "react-toastify";
 import agent from "../api/agent";
 import { IPhoto, IProfile } from "../models/profile";
@@ -9,6 +9,16 @@ export default class ProfileStore {
  rootStore: RootStore
  constructor(rootStore: RootStore) {
   this.rootStore = rootStore;
+
+  reaction(() => this.activeTab,
+   activeTab => {
+    if (activeTab === 3 || activeTab === 4) {
+     const predicate = activeTab === 3 ? 'followers' : 'following';
+     this.loadFollowings(predicate);
+    } else {
+     this.followings = [];
+    }
+   })
  }
 
  @observable profile: IProfile | null = null;
@@ -16,6 +26,7 @@ export default class ProfileStore {
  @observable uploadingPhoto = false;
  @observable loading = false;
  @observable followings: IProfile[] = [];
+ @observable activeTab: number = 0;
 
  @computed get isCurrentUser() {
   if (this.rootStore.userStore.user && this.profile) {
@@ -147,6 +158,10 @@ export default class ProfileStore {
     this.loading = false;
    })
   }
+ }
+
+ @action setActiveTab = (activeIndex: number) => {
+  this.activeTab = activeIndex;
  }
 }
 
