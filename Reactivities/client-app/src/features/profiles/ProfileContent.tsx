@@ -9,10 +9,15 @@ const panes = [
  {menuItem: 'Activities', render: () => <Tab.Pane>Activities content</Tab.Pane>},
  {menuItem: 'Followers', render: () => <ProfileFollowings/>},
  {menuItem: 'Following', render: () => <ProfileFollowings/>}
-]
+];
 
-export const ProfileContent = () => {
+interface IProps {
+ setActiveTab: (activeIndex: any) => void;
+}
+
+export const ProfileContent: React.FC<IProps> = ({setActiveTab}) => {
  return (
-  <Tab menu={{fluid: true, vertical: true}} menuPosition='right' panes={panes} activeIndex={1}/>
+  <Tab menu={{fluid: true, vertical: true}} menuPosition='right' panes={panes} activeIndex={1} 
+  onTabChange={(e, data) => setActiveTab(data.activeIndex)}/>
  )
 }
