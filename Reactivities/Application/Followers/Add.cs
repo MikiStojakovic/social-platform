@@ -37,7 +37,7 @@ namespace Application.Followers
     if (target == null)
      throw new RestException(HttpStatusCode.NotFound, new { User = "Not found" });
 
-    var following = await _context.Following.SingleOrDefaultAsync(x => x.ObserverId == observer.Id && x.TargetId == target.Id);
+    var following = await _context.Followings.SingleOrDefaultAsync(x => x.ObserverId == observer.Id && x.TargetId == target.Id);
 
     if (following != null)
      throw new RestException(HttpStatusCode.BadRequest, new { User = "You are already following this user" });
@@ -50,7 +50,7 @@ namespace Application.Followers
       Target = target
      };
 
-     _context.Following.Add(following);
+     _context.Followings.Add(following);
     }
 
     var success = await _context.SaveChangesAsync() > 0;
