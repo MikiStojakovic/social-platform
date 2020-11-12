@@ -1,3 +1,4 @@
+import { tr } from "date-fns/locale";
 import { action, observable, runInAction, computed } from "mobx";
 import { toast } from "react-toastify";
 import agent from "../api/agent";
@@ -96,4 +97,39 @@ export default class ProfileStore {
    })
   }
  }
+
+ @action follow = async (username: string) => {
+  this.loading = true;
+  try {
+   await agent.Profiles.follow(username);
+   runInAction(() => {
+    this.profile!.following = true;
+    this.profile!.followersCount++;
+    this.loading = false;
+   })
+  } catch (error) {
+   toast.error('Problem following user');
+   runInAction(() => {
+    this.loading = false;
+   })
+  }
+ }
+
+ @action unfollow = async (username: string) => {
+  this.loading = true;
+  try {
+   await agent.Profiles.unfollow(username);
+   runInAction(() => {
+    this.profile!.following = false;
+    this.profile!.followersCount--;
+    this.loading = false;
+   })
+  } catch (error) {
+   toast.error('Problem unfollowing user');
+   runInAction(() => {
+    this.loading = false;
+   })
+  }
+ }
 }
+
