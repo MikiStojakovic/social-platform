@@ -43,6 +43,8 @@ namespace Persistence
 
    builder.Entity<UserFollowing>(b =>
    {
+    b.ToTable("Followings");
+
     b.HasKey(k => new { k.ObserverId, k.TargetId });
 
     b.HasOne(o => o.Observer)
