@@ -58,11 +58,5 @@ namespace API.Controllers
   {
    return await Mediator.Send(new Unattend.Command { Id = id });
   }
-
-  [HttpGet("{username}/activities")]
-  public async Task<ActionResult<List<UserActivityDTO>>> GetUserActivities(string username, string predicate)
-  {
-   return await Mediator.Send(new ListActivities.Query { Username = username, Predicate = predicate });
-  }
  }
 }
