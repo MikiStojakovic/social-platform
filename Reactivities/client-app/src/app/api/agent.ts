@@ -95,8 +95,9 @@ const Profiles = {
   deletePhoto: (id: string) => requests.delete(`/photos/${id}`),
   follow: (username: string) => requests.post(`/profiles/${username}/follow`, {}),
   unfollow: (username: string) => requests.delete(`/profiles/${username}/follow`),
-  listFollowings: (username: string, predicate: string)  => requests.get(`/profiles/${username}/follow?predicate=${predicate}`)
-}
+  listFollowings: (username: string, predicate: string) => requests.get(`/profiles/${username}/follow?predicate=${predicate}`),
+  listActivities: (username: string, predicate: string) => requests.get(`/profiles/${username}/activities?predicate=${predicate}`)
+};
 
 export default {
   Activities,
