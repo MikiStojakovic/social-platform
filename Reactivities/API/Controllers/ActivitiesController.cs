@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Activities;
+using Application.Profiles;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -22,7 +23,7 @@ namespace API.Controllers
   [Authorize]
   public async Task<ActivityDTO> Details(Guid id)
   {
-   return await Mediator.Send(new Details.Query { Id = id });
+   return await Mediator.Send(new Application.Activities.Details.Query { Id = id });
   }
 
   [HttpPost]
@@ -56,6 +57,12 @@ namespace API.Controllers
   public async Task<ActionResult<Unit>> Unattend(Guid id)
   {
    return await Mediator.Send(new Unattend.Command { Id = id });
+  }
+
+  [HttpGet("{username}/activities")]
+  public async Task<ActionResult<List<UserActivityDTO>>> GetUserActivities(string username, string predicate)
+  {
+   return await Mediator.Send(new ListActivities.Query { Username = username, Predicate = predicate });
   }
  }
 }
