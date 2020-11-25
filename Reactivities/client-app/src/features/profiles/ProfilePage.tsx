@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { Grid } from 'semantic-ui-react'
 import { LoadingComponent } from '../../app/layout/LoadingComponent'
 import { RootStoreContext } from '../../app/stores/rootStore'
-import { ProfileContent } from './ProfileContent'
+import ProfileContent from './ProfileContent'
 import ProfileHeader from './ProfileHeader'
 
 interface RouteParams {
