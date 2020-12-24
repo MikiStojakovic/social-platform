@@ -28,7 +28,9 @@ axios.interceptors.response.use(undefined, (error) => {
   if (status === 404) {
     history.push('/notfound');
   }
-
+  if (status === 401) {
+    console.log(error.response)
+  }
   if (
     status === 400 &&
     config.method === 'get' &&
