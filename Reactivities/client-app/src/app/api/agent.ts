@@ -6,6 +6,7 @@ import { IPhoto, IProfile } from '../models/profile';
 import { IUser, IUserFormValues } from '../models/user';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.request.use(
   (config) => {
